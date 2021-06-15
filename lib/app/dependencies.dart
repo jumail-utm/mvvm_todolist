@@ -8,8 +8,10 @@ GetIt dependency = GetIt.instance;
 
 void init() {
   // Services
-  dependency.registerLazySingleton<RestService>(
-      () => RestService(baseUrl: 'http://192.168.0.3:3000'));
+  dependency.registerLazySingleton<RestService>(() => RestService(
+      baseUrl:
+          'http://192.168.0.3:5001/jumail-backend-firebase-rest/us-central1/api'));
+  // () => RestService(baseUrl: 'http://192.168.0.3:3000'));
   dependency
       .registerLazySingleton<TodolistService>(() => TodolistServiceRest());
   // .registerLazySingleton<TodolistService>(() => TodolistServiceMock());
