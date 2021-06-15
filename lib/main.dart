@@ -23,8 +23,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // final _todoList = <String>['Hello World', 'How are you'];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
