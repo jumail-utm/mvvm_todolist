@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_todolist/models/todo.dart';
+import 'package:mvvm_todolist/screens/todolist/todolist_viewmodel.dart';
+import 'package:mvvm_todolist/screens/view.dart';
 
 class TodolistScreen extends StatelessWidget {
   @override
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('My Todo list'),
-        ),
-        body: Center(
-            child: ListView.separated(
-          itemCount: 3,
-          itemBuilder: (_, index) =>
-              ListTile(title: Text('Todo item ${index + 1}')),
-          separatorBuilder: (context, index) => Divider(
-            color: Colors.blueGrey,
-          ),
-        )),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-      ),
+    return View(
+      viewmodel: TodolistViewmodel(),
+      builder: (_, _viewmodel, __) {
+        final TodolistViewmodel viewmodel = _viewmodel;
+        return FutureBuilder<List<Todo>>(
+            future: viewmodel.getTodolist(),
+            builder: (_, snapshot) {
+              if (snapshot.hasData) {
+                final _todolist = snapshot.data;
+                return SafeArea(
+                    child: Scaffold(
+                        appBar: AppBar(
+                          title: Text('My Todo List'),
+                        ),
+                        body: ListView.separated(
+                            itemCount: _todolist.length,
+                            itemBuilder: (_, index) =>
+                                ListTile(title: Text(_todolist[index].title)),
+                            separatorBuilder: (_, __) =>
+                                Divider(color: Colors.blueGrey)),
+                        floatingActionButton: FloatingActionButton(
+                          onPressed: () => viewmodel.addTodo(
+                              Todo(title: 'Todo item ${_todolist.length + 1}')),
+                          child: Icon(Icons.add),
+                        )));
+              } else {
+                return CircularProgressIndicator();
+              }
+            });
+      },
     );
   }
 }
