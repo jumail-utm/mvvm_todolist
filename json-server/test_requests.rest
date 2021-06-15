@@ -1,0 +1,9 @@
+### Use this file to test out your REST call before implementing them in the code
+
+### Change the IP address below to your PC's IP address. Remain the port number 3000 unchanged
+@baseUrl = http://192.168.0.3:3000
+
+GET {{baseUrl}}/todos
+
+###
+GET {{baseUrl}}/todos/2

@@ -1,7 +1,7 @@
 import '../../app/dependencies.dart';
 import '../../models/todo.dart';
 import '../viewmodel.dart';
-import '../../services/todolist_service.dart';
+import '../../services/todolist/todolist_service.dart';
 
 class TodolistViewmodel extends Viewmodel {
   List<Todo> _todolist = [];

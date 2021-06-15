@@ -1,4 +1,4 @@
-import '../models/todo.dart';
+import '../../models/todo.dart';
 
 abstract class TodolistService {
   Future<List<Todo>> getTodolist();
