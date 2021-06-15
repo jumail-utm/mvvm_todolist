@@ -1,9 +1,9 @@
 ### Use this file to test out your REST call before implementing them in the code
 
 ### Change the IP address below to your PC's IP address. Remain the port number 3000 unchanged
-@baseUrl = http://192.168.0.3:3000
+@baseUrl = http://localhost:5001/jumail-backend-firebase-rest/us-central1/api
 
 GET {{baseUrl}}/todos
 
 ###
-GET {{baseUrl}}/todos/2
+GET {{baseUrl}}/todos/VpGdWdcsapuKYJ6J8M9k
