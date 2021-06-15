@@ -23,7 +23,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // final _todoList = <String>['Hello World', 'How are you'];
+  final _todoList = <String>['Hello World', 'How are you'];
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Center(
             child: ListView.separated(
-          itemCount: 3,
-          itemBuilder: (_, index) =>
-              ListTile(title: Text('Todo item ${index + 1}')),
+          itemCount: _todoList.length,
+          itemBuilder: (_, index) => ListTile(title: Text(_todoList[index])),
           separatorBuilder: (context, index) => Divider(
             color: Colors.blueGrey,
           ),
         )),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () => setState(
+              () => _todoList.add('Todo item ${_todoList.length + 1}')),
           child: Icon(Icons.add),
         ),
       ),
