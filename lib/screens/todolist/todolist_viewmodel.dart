@@ -5,7 +5,17 @@ import '../../services/todolist/todolist_service.dart';
 
 class TodolistViewmodel extends Viewmodel {
   List<Todo> _todolist = [];
+  TodolistViewmodel() {
+    _loadTodolist();
+  }
+
   TodolistService get _service => dependency();
+
+  void _loadTodolist() async {
+    turnBusy();
+    await getTodolist();
+    turnIdle();
+  }
 
   Future<List<Todo>> getTodolist() async {
     _todolist = await _service.getTodolist();

@@ -10,31 +10,24 @@ class TodolistScreen extends StatelessWidget {
       viewmodel: TodolistViewmodel(),
       builder: (_, _viewmodel, __) {
         final TodolistViewmodel viewmodel = _viewmodel;
-        return FutureBuilder<List<Todo>>(
-            future: viewmodel.getTodolist(),
-            builder: (_, snapshot) {
-              if (snapshot.hasData) {
-                final _todolist = snapshot.data;
-                return SafeArea(
-                    child: Scaffold(
-                        appBar: AppBar(
-                          title: Text('My Todo List'),
-                        ),
-                        body: ListView.separated(
-                            itemCount: _todolist.length,
-                            itemBuilder: (_, index) =>
-                                ListTile(title: Text(_todolist[index].title)),
-                            separatorBuilder: (_, __) =>
-                                Divider(color: Colors.blueGrey)),
-                        floatingActionButton: FloatingActionButton(
-                          onPressed: () => viewmodel.addTodo(
-                              Todo(title: 'Todo item ${_todolist.length + 1}')),
-                          child: Icon(Icons.add),
-                        )));
-              } else {
-                return CircularProgressIndicator();
-              }
-            });
+        final _todolist = viewmodel.todolist;
+
+        return SafeArea(
+            child: Scaffold(
+                appBar: AppBar(
+                  title: Text('My Todo List'),
+                ),
+                body: ListView.separated(
+                    itemCount: _todolist.length,
+                    itemBuilder: (_, index) =>
+                        ListTile(title: Text(_todolist[index].title)),
+                    separatorBuilder: (_, __) =>
+                        Divider(color: Colors.blueGrey)),
+                floatingActionButton: FloatingActionButton(
+                  onPressed: () => viewmodel.addTodo(
+                      Todo(title: 'Todo item ${_todolist.length + 1}')),
+                  child: Icon(Icons.add),
+                )));
       },
     );
   }
