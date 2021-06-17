@@ -9,6 +9,8 @@
 .history
 .svn/
 .vscode/
+.data/
+.firebase-rest/
 
 # IntelliJ related
 *.iml
