@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'app/dependencies.dart' as di;
 import 'screens/todolist_screen.dart';
 
 void main() {
+  di.init();
   runApp(MyApp());
 }
 

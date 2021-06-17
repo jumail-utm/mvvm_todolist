@@ -1,10 +1,8 @@
 import '../../models/todo.dart';
+import 'todolist_service.dart';
 
-class TodolistServiceMock {
-  final _data = [
-    Todo(title: 'Hello World'),
-    Todo(title: 'How are you. This is from mock data service')
-  ];
+class TodolistServiceMock implements TodolistService {
+  final _data = [Todo(title: 'Hello World'), Todo(title: 'How are you')];
 
   Future<List<Todo>> getTodolist() async {
     return [..._data];

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../models/todo.dart';
-import '../services/todolist/todolist_service_mock.dart';
+import '../app/dependencies.dart';
+import '../services/todolist/todolist_service.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TodolistServiceMock service = TodolistServiceMock();
+  final service = dependency<TodolistService>();
   List<Todo> _todoList;
   Future<List<Todo>> _todoListFuture;
 
